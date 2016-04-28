@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('theme.finder', function ($app) {
-            $finder = new ThemeViewFinder($app[files], $app['config']['view.paths']);
+            $finder = new ThemeViewFinder($app['files'], $app['config']['view.paths']);
             $config = $app['config']['cms.theme'];
 
             $finder->setBasePath($app['path.public'] . '/' . $config['folder']);
