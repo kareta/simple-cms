@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="/laravel-cms/public/themes/default/assets/css/backend.css">
+    <link rel="stylesheet" href="{{ getThemeUrl('css/backend.css') }}">
 </head>
 <body>
     <h1>The CMS</h1>
