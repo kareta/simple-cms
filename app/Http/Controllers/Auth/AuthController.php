@@ -20,6 +20,6 @@ class AuthController extends Controller
     {
         $this->redirectAfterLogout = route('auth.login');
         $this->redirectTo = route('backend.dashboard');
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'getLogout']);
     }
 }
