@@ -1,5 +1,8 @@
 <?php
 
+Route::resource('backend/users', 'Backend\UsersController');
+Route::get('backend/users/{users}/confirm', ['as' => 'backend.users.confirm', 'uses' => 'Backend\UsersController@confirm']);
+
 Route::controller('auth/password', 'Auth\PasswordController', [
     'getEmail' => 'auth.passwords.email',
     'getReset' => 'auth.passwords.reset'
