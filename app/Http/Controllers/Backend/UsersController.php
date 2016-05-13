@@ -34,9 +34,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        return view('backend.users.form', compact('user'));
     }
 
     /**
