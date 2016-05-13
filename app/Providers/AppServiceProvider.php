@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\View\ThemeViewFinder;
 use Illuminate\Support\ServiceProvider;
+use App\View\Composers\AddStatusMessage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app['view']->setFinder($this->app['theme.finder']);
+        $this->app['view']->composer('layouts.auth', AddStatusMessage::class);
     }
 
     /**
