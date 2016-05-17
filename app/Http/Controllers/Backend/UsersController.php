@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\User;
 
 class UsersController extends Controller
@@ -70,7 +71,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->users->findOrFail($id);
+
+        return view('backend.users.form', compact('user'));
     }
 
     /**
@@ -80,9 +83,12 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $user = $this->users->findOrFail($id);
+        $user->fill($request->only('name', 'email', 'password'))->save();
+
+        redirect(route('backend.users.edit', $user->id))->with('status', 'User has been updated');
     }
 
     public function confirm()

@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title', $user->exists ? 'Editing' . $user->name : 'Create new user')
+@section('title', $user->exists ? 'Editing ' . $user->name : 'Create new user')
 
 @section('content')
     {!! Form::model($user, [
@@ -20,12 +20,12 @@
 
     <div class="form-group">
         {!! Form::label('password') !!}
-        {!! Form::text('password', null, ['class' => 'form-control']) !!}
+        {!! Form::password('password', ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('password_confirmation') !!}
-        {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!}
+        {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
     </div>
 
     {!! Form::submit($user->exists ? 'Save user' : 'Create user', ['class' => 'btn btn-primary']) !!}
