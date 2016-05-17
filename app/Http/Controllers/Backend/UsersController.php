@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\DeleteUserRequest;
 use App\User;
 
 class UsersController extends Controller
@@ -53,17 +54,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -91,8 +81,11 @@ class UsersController extends Controller
         redirect(route('backend.users.edit', $user->id))->with('status', 'User has been updated');
     }
 
-    public function confirm()
+    public function confirm(DeleteUserRequest $request, $id)
     {
+        $user = $this->users->findOrFail($id);
+
+        return view('backend.users.confirm', compact('user'));
     }
 
     /**
@@ -101,8 +94,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DeleteUserRequest $request, $id)
     {
-        //
+        $user = $this->users->findOrFail($id);
+        $user->delete();
+
+        return redirect(route('backend.users.index'))->with('status', 'User has been deleted.');
     }
 }
