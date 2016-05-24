@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Backend\Controller;
 use App\Page;
+use App\Http\Requests\StorePageRequest;
 
 class PagesController extends Controller
 {
@@ -34,9 +34,9 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Page $page)
     {
-        //
+        return view('backend.pages.form', compact('page'));
     }
 
     /**
@@ -45,9 +45,11 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePageRequest $request)
     {
-        //
+        $this->pages->create($request->only('title', 'uri', 'name', 'content'));
+
+        return redirect(route('backend.pages.index'))->with('status', 'Page has beed created.');
     }
 
     /**

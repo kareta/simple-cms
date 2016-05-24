@@ -21,7 +21,7 @@
 
     <div class="form-group">
         {!! Form::label('name') !!}
-        {!! Form::password('name', ['class' => 'form-control']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
         <p class="help-block">
             Name is used to generate links to the page.
@@ -30,10 +30,14 @@
 
     <div class="form-group">
         {!! Form::label('content') !!}
-        {!! Form::textarea('content', ['class' => 'form-control']) !!}
+        {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
     </div>
 
-    {!! Form::submit($user->exists ? 'Save page' : 'Create page', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit($page->exists ? 'Save page' : 'Create page', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
+
+    <script>
+        new SimpleMDE().render();
+    </script>
 @endsection

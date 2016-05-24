@@ -3,6 +3,7 @@
 @section('title', 'Pages')
 
 @section('content')
+    <a href="{{ route('backend.pages.create') }}" class="btn btn-primary">Create new page</a>
     <table class="table table-hover">
         <thead>
         <tr>

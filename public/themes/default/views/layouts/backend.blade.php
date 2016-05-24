@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>@yield('title') &mdash; The CMS</title>
     <link rel="stylesheet" href="{{ getThemeUrl('css/backend.css') }}">
-    <script src="{{ getThemeUrl('js/simplemde.js') }}"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-static-top navbar-inverse">
