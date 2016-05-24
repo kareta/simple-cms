@@ -1,7 +1,7 @@
 <?php
 
 Route::resource('backend/users', 'Backend\UsersController', ['except' => 'show']);
-Route::resource('backend/pages', 'Backend\PagesController');
+Route::resource('backend/pages', 'Backend\PagesController', ['except' => 'show']);
 
 Route::get('backend/pages/{pages}/confirm', [
     'as' => 'backend.pages.confirm',

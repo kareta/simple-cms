@@ -33,12 +33,12 @@
                         <td> {{ $page->name or 'No name' }}</td>
                         <td>
                             <a href="{{ route('backend.pages.edit', $page->id) }}">
-                                <span class="glyphicon gliphicon-edit"></span>
+                                <span class="glyphicon glyphicon-edit"></span>
                             </a>
                         </td>
                         <td>
                             <a href="{{ route('backend.pages.confirm', $page->id) }}">
-                                <span class="glyphicon gliphicon-remove"></span>
+                                <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </td>
                     </tr>

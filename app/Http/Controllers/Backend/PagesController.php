@@ -54,17 +54,6 @@ class PagesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -95,7 +84,9 @@ class PagesController extends Controller
 
     public function confirm($id)
     {
+        $page = $this->pages->findOrFail($id);
 
+        return view('backend.pages.confirm', compact('page'));
     }
 
     /**
@@ -106,6 +97,9 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+        $page->delete();
+
+        return redirect(route('backend.pages.index'))->with('status', 'You have deleted a page.');
     }
 }
