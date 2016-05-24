@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title', $page->exists ? 'Editing ' . $user->name : 'Create new page')
+@section('title', $page->exists ? 'Editing ' . $page->name : 'Create new page')
 
 @section('content')
     {!! Form::model($page, [

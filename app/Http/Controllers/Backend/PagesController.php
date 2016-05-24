@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Page;
 use App\Http\Requests\StorePageRequest;
+use App\Http\Requests\UpdatePageRequest;
 
 class PagesController extends Controller
 {
@@ -71,7 +72,9 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+
+        return view('backend.pages.form', compact('page'));
     }
 
     /**
@@ -81,9 +84,13 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePageRequest $request, $id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+        $page->fill($request->only('title', 'uri', 'name', 'content'))->save();
+
+        return redirect(route('backend.pages.edit', $page->id))
+            ->with('status', 'Page has beed changed.');
     }
 
     public function confirm($id)
