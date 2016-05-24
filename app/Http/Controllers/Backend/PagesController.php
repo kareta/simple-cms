@@ -37,7 +37,8 @@ class PagesController extends Controller
      */
     public function create(Page $page)
     {
-        return view('backend.pages.form', compact('page'));
+        $templates = $this->getPageTemplates();
+        return view('backend.pages.form', compact('page', 'templates'));
     }
 
     /**
@@ -48,7 +49,7 @@ class PagesController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        $this->pages->create($request->only('title', 'uri', 'name', 'content'));
+        $this->pages->create($request->only('title', 'uri', 'name', 'content', 'template'));
 
         return redirect(route('backend.pages.index'))->with('status', 'Page has beed created.');
     }
@@ -62,8 +63,9 @@ class PagesController extends Controller
     public function edit($id)
     {
         $page = $this->pages->findOrFail($id);
+        $templates = $this->getPageTemplates();
 
-        return view('backend.pages.form', compact('page'));
+        return view('backend.pages.form', compact('page', 'templates'));
     }
 
     /**
@@ -76,7 +78,7 @@ class PagesController extends Controller
     public function update(UpdatePageRequest $request, $id)
     {
         $page = $this->pages->findOrFail($id);
-        $page->fill($request->only('title', 'uri', 'name', 'content'))->save();
+        $page->fill($request->only('title', 'uri', 'name', 'content', 'template'))->save();
 
         return redirect(route('backend.pages.edit', $page->id))
             ->with('status', 'Page has beed changed.');
@@ -101,5 +103,12 @@ class PagesController extends Controller
         $page->delete();
 
         return redirect(route('backend.pages.index'))->with('status', 'You have deleted a page.');
+    }
+
+    protected function getPageTemplates()
+    {
+        $templates = config('cms.templates');
+
+        return ['' => ''] + array_combine(array_keys($templates), array_keys($templates));
     }
 }
