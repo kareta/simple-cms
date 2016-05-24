@@ -13,6 +13,6 @@ return [
     ],
 
     'templates' => [
-
+        'page' => App\Templates\PageTemplate::class
     ]
 ];
