@@ -24,8 +24,12 @@
                         <td>
                             <a href="{{ route('backend.pages.edit', $page->id) }}">{{ $page->title }}</a>
                         </td>
-                        <td> {{ $page->uri }}</td>
-                        <td> {{ $page->name }}</td>
+                        <td>
+                            <a href="{{ url($page->uri) }}">
+                                {{ $page->prettyUri }}
+                            </a>
+                        </td>
+                        <td> {{ $page->name or 'No name' }}</td>
                         <td>
                             <a href="{{ route('backend.pages.edit', $page->id) }}">
                                 <span class="glyphicon gliphicon-edit"></span>

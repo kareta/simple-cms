@@ -122,6 +122,7 @@ return [
     */
 
     'providers' => [
+        Lewis\Presenter\PresenterServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
