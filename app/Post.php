@@ -14,4 +14,9 @@ class Post extends Model
     {
         $this->attributes['published_at'] = $value ?: null;
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

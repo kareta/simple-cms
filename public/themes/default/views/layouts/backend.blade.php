@@ -10,10 +10,13 @@
 <body>
 <nav class="navbar navbar-static-top navbar-inverse">
     <div class="container">
-        <div class="navbar-header"><a href="" class="navbar-brand">The CMS</a></div>
+        <div class="navbar-header">
+            <a href="{{ route('backend.dashboard') }}" class="navbar-brand">The CMS</a>
+        </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ route('backend.users.index') }}">Users</a></li>
             <li><a href="{{ route('backend.pages.index') }}">Pages</a></li>
+            <li><a href="{{ route('backend.blog.index') }}">Posts</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><span class="navbar-text">Hello, {{ $admin->name }}</span></li>

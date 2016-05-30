@@ -23,6 +23,11 @@ Route::controller('auth', 'Auth\AuthController', [
     'getLogout' => 'auth.logout'
 ]);
 
+Route::get('backend/blog/{blog}/confirm', [
+    'as' => 'backend.blog.confirm', 'uses' => 'Backend\BlogController@confirm'
+]);
+Route::resource('backend/blog', 'Backend\BlogController');
+
 Route::get('backend/dashboard', [
     'as' => 'backend.dashboard',
     'uses' => 'Backend\DashboardController@index'
