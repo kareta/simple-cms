@@ -18,4 +18,17 @@ class Page extends Node
     {
         $this->attributes['template'] = $value ?: null;
     }
+
+    public function updateOrder($order, $orderPage)
+    {
+        $orderPage = $this->findOrFail($orderPage);
+
+        if ($order == 'before') {
+            $this->moveToLeftOf($orderPage);
+        } elseif ($order == 'after') {
+            $this->moveToRightOf($orderPage);
+        } elseif ($order == 'childOf') {
+            $this->makeChildOf($orderPage);
+        }
+    }
 }

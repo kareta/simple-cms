@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Baum\MoveNotPossibleException;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -38,7 +39,9 @@ class PagesController extends Controller
     public function create(Page $page)
     {
         $templates = $this->getPageTemplates();
-        return view('backend.pages.form', compact('page', 'templates'));
+        $orderPages = $this->pages->all();
+
+        return view('backend.pages.form', compact('page', 'templates', 'orderPages'));
     }
 
     /**
@@ -49,7 +52,8 @@ class PagesController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        $this->pages->create($request->only('title', 'uri', 'name', 'content', 'template'));
+        $page = $this->pages->create($request->only('title', 'uri', 'name', 'content', 'template'));
+        $this->updatePageOrder($page, $request);
 
         return redirect(route('backend.pages.index'))->with('status', 'Page has beed created.');
     }
@@ -62,10 +66,12 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
+
         $page = $this->pages->findOrFail($id);
         $templates = $this->getPageTemplates();
+        $orderPages = $this->pages->all();
 
-        return view('backend.pages.form', compact('page', 'templates'));
+        return view('backend.pages.form', compact('page', 'templates', 'orderPages'));
     }
 
     /**
@@ -78,6 +84,11 @@ class PagesController extends Controller
     public function update(UpdatePageRequest $request, $id)
     {
         $page = $this->pages->findOrFail($id);
+
+        if ($response = $this->updatePageOrder($page, $request)) {
+            return $response;
+        }
+
         $page->fill($request->only('title', 'uri', 'name', 'content', 'template'))->save();
 
         return redirect(route('backend.pages.edit', $page->id))
@@ -100,6 +111,11 @@ class PagesController extends Controller
     public function destroy($id)
     {
         $page = $this->pages->findOrFail($id);
+
+        foreach ($page->children as $child) {
+            $child->makeRoot();
+        }
+
         $page->delete();
 
         return redirect(route('backend.pages.index'))->with('status', 'You have deleted a page.');
@@ -110,5 +126,18 @@ class PagesController extends Controller
         $templates = config('cms.templates');
 
         return ['' => ''] + array_combine(array_keys($templates), array_keys($templates));
+    }
+
+    protected function updatePageOrder(Page $page, Request $request)
+    {
+        if ($request->has('order', 'orderPage')) {
+            try {
+                $page->updateOrder($request->input('order'), $request->input('orderPage'));
+            } catch (MoveNotPossibleException $e) {
+                return redirect(route('backend.pages.edit', $page->id))->withInput()->withErrors([
+                    'error' => 'Cannot make a page a child of itself.'
+                ]);
+            }
+        }
     }
 }

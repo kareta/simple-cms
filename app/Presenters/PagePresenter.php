@@ -10,4 +10,18 @@ class PagePresenter extends AbstractPresenter
     {
         return '/' . ltrim($this->uri, '/');
     }
+
+    public function linkToPaddedTitle($link)
+    {
+        $padding = str_repeat('&nbsp;', $this->depth * 4);
+
+        return $padding . link_to($link, $this->title);
+    }
+
+    public function paddedTitle()
+    {
+        $padding = str_repeat('&nbsp;', $this->depth * 4);
+
+        return $padding . $this->title;
+    }
 }
