@@ -15,5 +15,6 @@ return [
     'templates' => [
         'home' => App\Templates\HomeTemplate::class,
         'blog' => App\Templates\BlogTemplate::class,
+        'blog.post' => App\Templates\PostTemplate::class,
     ]
 ];
