@@ -13,6 +13,7 @@ return [
     ],
 
     'templates' => [
-        'home' => App\Templates\HomeTemplate::class
+        'home' => App\Templates\HomeTemplate::class,
+        'blog' => App\Templates\BlogTemplate::class,
     ]
 ];
