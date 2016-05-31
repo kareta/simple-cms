@@ -33,8 +33,5 @@ Route::get('backend/dashboard', [
     'uses' => 'Backend\DashboardController@index'
 ]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
