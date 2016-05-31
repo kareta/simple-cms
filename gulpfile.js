@@ -68,4 +68,5 @@ elixir(function(mix) {
     ]);
 
     mix.sass('backend.scss');
+    mix.sass('frontend.scss');
 });
