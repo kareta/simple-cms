@@ -5,6 +5,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(font-awesome.css);
+@import url(simplemde.css);
+@import url(datapicker.css);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -5763,5 +5766,9 @@ button.close {
 
 body {
   padding-bottom: 2rem; }
+
+.excerpt .CodeMirror {
+  height: 100px;
+  min-height: 100px; }
 
 /*# sourceMappingURL=backend.css.map */

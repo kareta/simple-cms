@@ -1,6 +1,7 @@
 @import "bootstrap";
-@import "font-awesome";
+@import "font-awesome.css";
 @import "simplemde.css";
+@import "datapicker.css";
 
 .vertical-center {
   display: flex;
@@ -11,4 +12,9 @@
 
 body {
   padding-bottom: 2rem;
+}
+
+.excerpt .CodeMirror {
+  height: 100px;
+  min-height: 100px;
 }
