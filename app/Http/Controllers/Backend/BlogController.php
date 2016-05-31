@@ -72,7 +72,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = $this->posts->findOrFail($id);
+        return view('backend.blog.form', compact('post'));
     }
 
     /**
@@ -84,7 +85,9 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = $this->posts->findOrFail($id);
+        $post->fill($request->only('title', 'slug', 'published_at', 'body', 'excerpt'))->save();
+        return redirect(route('backend.blog.edit', $post->id))->with('status', 'Post has been updated.');
     }
 
     public function confirm($id)
