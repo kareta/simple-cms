@@ -18,9 +18,14 @@
         {!! Form::text('slug', null, ['class' => 'form-control']) !!}
     </div>
 
-    <div class="form-group">
-        {!! Form::label('published_at') !!}
-        {!! Form::text('published_at', null, ['class' => 'form-control']) !!}
+    <div class="form-group row">
+        <div class="col-md-12">
+            {!! Form::label('published_at') !!}
+        </div>
+        <div class="col-md-4">
+            {!! Form::text('published_at', null, ['class' => 'form-control']) !!}
+        </div>
+
     </div>
 
     <div class="form-group excerpt">
@@ -47,9 +52,19 @@
 
         $('input[name=published_at]').datetimepicker({
             allowInputToggle: true,
-            format: 'YYY-MM-DD HH:mm:ss'
+            format: 'YYYY-MM-DD HH:mm:ss',
             showClear: true,
             defaultDate: '{{ old('published_at', $post['published_at']) }}'
+        });
+
+        $('input[name=title]').on('blur', function() {
+            var slugElement = $('input[name=slug]');
+
+            if (slugElement.val()) {
+                return;
+            }
+
+            slugElement.val(this.value.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, ''));
         });
     </script>
 @endsection
