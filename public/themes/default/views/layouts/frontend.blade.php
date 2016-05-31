@@ -18,10 +18,7 @@
             </a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="#">Item</a></li>
-            <li><a href="#">Item</a></li>
-            <li><a href="#">Item</a></li>
-            <li><a href="#">Item</a></li>
+            @include('partials.navigation')
         </ul>
     </div>
 </nav>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\View\Composers\InjectPages;
 use App\View\ThemeViewFinder;
 use Illuminate\Support\ServiceProvider;
 use App\View\Composers\AddStatusMessage;
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app['view']->setFinder($this->app['theme.finder']);
         $this->app['view']->composer(['layouts.auth', 'layouts.backend'], AddStatusMessage::class);
         $this->app['view']->composer('layouts.backend', AddAdminUser::class);
+        $this->app['view']->composer('layouts.frontend', InjectPages::class);
     }
 
     /**
