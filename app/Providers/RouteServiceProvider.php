@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Page;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -39,7 +40,15 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapWebRoutes($router);
 
-        //
+        foreach (Page::all() as $page) {
+            $router->get($page->uri, ['as' => $page->name, function () use ($page, $router) {
+                return $this->app->call('App\Http\Controllers\PageController@show', [
+                    'page' => $page,
+                    'parameters' => $router->current()->parameters()
+                ]);
+            }]);
+        }
+
     }
 
     /**

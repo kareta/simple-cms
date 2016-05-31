@@ -6,6 +6,19 @@ use Lewis\Presenter\AbstractPresenter;
 
 class PagePresenter extends AbstractPresenter
 {
+    protected $markdown;
+
+    public function __construct($object, Converter $markdown)
+    {
+        $this->markdown = $markdown;
+        parent::__construct($object);
+    }
+
+    public function contentHtml()
+    {
+        return $this->markdown->convertToHtml($this->content);
+    }
+
     public function uriWildcard()
     {
         return $this->uri . '*';
