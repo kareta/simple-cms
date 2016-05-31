@@ -13,6 +13,7 @@
             <a href="{{ route('backend.dashboard') }}" class="navbar-brand">The CMS</a>
         </div>
         <ul class="nav navbar-nav">
+            <li><a href="{{ route('backend.dashboard') }}">Dashboard</a></li>
             <li><a href="{{ route('backend.users.index') }}">Users</a></li>
             <li><a href="{{ route('backend.pages.index') }}">Pages</a></li>
             <li><a href="{{ route('backend.blog.index') }}">Posts</a></li>

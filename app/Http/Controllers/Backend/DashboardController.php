@@ -7,11 +7,15 @@
  */
 
 namespace App\Http\Controllers\Backend;
+use App\Post;
+use App\User;
 
 
 class DashboardController extends Controller
 {
-    function index() {
-        return view('backend.dashboard');
+    public function index(Post $posts, User $users)
+    {
+        $posts = $posts->orderBy('updated_at', 'desc')->take(5)->get();
+        return view('backend.dashboard', compact('posts'));
     }
 }
