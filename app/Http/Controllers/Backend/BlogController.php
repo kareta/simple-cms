@@ -92,7 +92,8 @@ class BlogController extends Controller
 
     public function confirm($id)
     {
-        //
+        $post = $this->posts->findOrFail($id);
+        return view('backend.blog.confirm', compact('post'));
     }
 
     /**
@@ -103,6 +104,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = $this->posts->findOrFail($id);
+        $post->delete();
+        return redirect(route('backend.blog.index'))->with('status', 'Post has been deleted.');
     }
 }
