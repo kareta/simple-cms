@@ -27,7 +27,6 @@ class StorePostRequest extends Request
             'title' => ['required'],
             'slug' => ['required'],
             'body' => ['required'],
-            'published_at' => ['date_format:Y:m:d H:i:s'],
         ];
     }
 }
