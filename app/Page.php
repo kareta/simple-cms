@@ -14,6 +14,16 @@ class Page extends Node
         $this->attributes['name'] = $value ?: null;
     }
 
+    public function setHiddenAttribute($value)
+    {
+        if ($value == null) {
+            $this->attributes['hidden'] = 0;
+        } else {
+            $this->attributes['hidden'] = $value;
+        }
+
+    }
+
     public function setTemplateAttribute($value)
     {
         $this->attributes['template'] = $value ?: null;

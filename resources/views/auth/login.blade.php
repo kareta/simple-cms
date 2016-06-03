@@ -15,7 +15,7 @@
 
     <div class="form-group">
         {!! Form::label('password') !!}
-        {!! Form::text('password', null, ['class' => 'form-control']) !!}
+        {!! Form::password('password', ['class' => 'form-control']) !!}
     </div>
 
     {!! Form::submit('Login', ['class' => 'btn btn-primary']) !!}
