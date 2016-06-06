@@ -78,7 +78,7 @@ class UsersController extends Controller
         $user = $this->users->findOrFail($id);
         $user->fill($request->only('name', 'email', 'password'))->save();
 
-        redirect(route('backend.users.edit', $user->id))->with('status', 'User has been updated');
+        return redirect(route('backend.users.edit', $user->id))->with('status', 'User has been updated');
     }
 
     public function confirm(DeleteUserRequest $request, $id)
