@@ -65,7 +65,7 @@
 
     <div class="checkbox">
         <label>
-            {!! Form::checkbox('hidden', 0) !!}
+            {!! Form::checkbox('hidden') !!}
 
             Hide page from navigation
 

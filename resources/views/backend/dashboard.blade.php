@@ -9,7 +9,7 @@
                 @foreach($posts as $post)
                     <li class="list-group-item">
                         <h4>
-                            <a href="#">{{ $post->title }}</a>
+                            <a href="{{ route('blog.post', [$post['id'], $post['slug']]) }}">{{ $post->title }}</a>
                             <a href="{{ route('backend.blog.edit', $post->id) }}" class="pull-right">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
@@ -24,9 +24,9 @@
             <ul class="list-group">
                 @foreach($users as $user)
                     <li class="list-group-item">
-                        <h4>{{ $user->name }}</h4>
+                        <h4>{{ $user['name'] }}</h4>
 
-                        Last login {{ $user->last_login_difference }}
+                        Last login {{ $user['last_login_difference'] }}
                     </li>
                 @endforeach
             </ul>
