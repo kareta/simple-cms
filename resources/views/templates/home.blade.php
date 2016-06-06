@@ -1,3 +1,4 @@
+<div class="home-image"><img src="{{ getThemeUrl('images/home.jpg') }}" alt=""></div>
 
 <div class="row">
     @foreach($posts as $post)
