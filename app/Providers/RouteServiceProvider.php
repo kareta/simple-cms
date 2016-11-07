@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Page;
+use App\Models\Page;
 
 class RouteServiceProvider extends ServiceProvider
 {

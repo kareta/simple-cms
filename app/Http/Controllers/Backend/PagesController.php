@@ -6,7 +6,7 @@ use Baum\MoveNotPossibleException;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Page;
+use App\Models\Page;
 use App\Http\Requests\StorePageRequest;
 use App\Http\Requests\UpdatePageRequest;
 

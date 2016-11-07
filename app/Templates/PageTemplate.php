@@ -2,7 +2,7 @@
 namespace App\Templates;
 
 use Carbon\Carbon;
-use App\Page;
+use App\Models\Page;
 use Illuminate\View\View;
 
 class PageTemplate extends AbstractTemplate

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 

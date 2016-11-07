@@ -1,7 +1,7 @@
 <?php
 namespace App\View\Composers;
 
-use App\Page;
+use App\Models\Page;
 use Illuminate\View\View;
 
 class InjectPages

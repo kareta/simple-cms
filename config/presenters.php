@@ -14,8 +14,8 @@ return [
     |
     */
 
-    App\Page::class => App\Presenters\PagePresenter::class,
-    App\Post::class => App\Presenters\PostPresenter::class,
-    App\User::class => App\Presenters\UserPresenter::class,
+    App\Models\Page::class => App\Presenters\PagePresenter::class,
+    \App\Models\Post::class => App\Presenters\PostPresenter::class,
+    \App\Models\User::class => App\Presenters\UserPresenter::class,
 
 ];

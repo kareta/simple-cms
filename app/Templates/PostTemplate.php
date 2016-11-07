@@ -2,7 +2,7 @@
 namespace App\Templates;
 
 use Carbon\Carbon;
-use App\Post;
+use App\Models\Post;
 use Illuminate\View\View;
 
 class PostTemplate extends AbstractTemplate
