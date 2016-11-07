@@ -9,7 +9,7 @@
                 @foreach($posts as $post)
                     <li class="list-group-item">
                         <h4>
-                            <a href="{{ route('blog.post', [$post['id'], $post['slug']]) }}">{{ $post->title }}</a>
+                            <a href="{{ route('backend.blog.index', [$post['id'], $post['slug']]) }}">{{ $post->title }}</a>
                             <a href="{{ route('backend.blog.edit', $post->id) }}" class="pull-right">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
